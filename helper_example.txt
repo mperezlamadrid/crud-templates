@@ -10,3 +10,7 @@ c.Set("”saludo", func(name string) string {
     return fmt.Sprintf("Hola %s!", name)
 })
 
+
+Uso:
+
+<h1><%= saludo("Manuel Perez") %></h1>
