@@ -1,0 +1,52 @@
+Requisitos:
+
+    $ echo $GOOPATH
+    $ echo $PATH
+    $ go version
+    $ gcc -v
+    $ node -v
+    $ npm -v
+
+Instalacion:
+
+    $ go get -u github.com/gobuffalo/buffalo/buffalo
+    $ go get -v -u -tags nosqlite github.com/gobuffalo/buffalo/buffalo
+
+Crear aplicacion:
+
+    $ buffalo new <nombre>
+    $ buffalo new <nombre> --db-type sqlite3
+    $ buffalo new <nombre>  --skip-pop
+
+Base de Datos:
+
+    $ buffalo db migrate [up | down]
+    $ buffalo db create –a
+    $ buffalo db create -e <entorno>
+    $ buffalo db drop
+    $ buffalo db g migration <nombre>
+    $ buffalo db g sql <nombre>
+
+Ejecutar aplicacion:
+
+    $ buffalo dev
+
+Modelos y Acciones:
+
+    $ buffalo db generate model <nombre>
+    $ buffalo generate action <nombre>
+
+Recursos:
+
+    $ buffalo g resource <name>
+
+Middleware:
+
+    $ app.Middleware.Skip(Middleware, Handler1, AnotherHandler, ...)
+    $ g.Middleware.Clear()
+
+Otros Comandos:
+
+    $ buffalo test
+    $ buffalo build [flags]
+    $ buffalo console

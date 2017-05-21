@@ -1,0 +1,12 @@
+Global:
+
+"saludo": func(name string) string {
+    return fmt.Sprintf("Hola %s!", name)
+},
+
+Especifico:
+
+c.Set("”saludo", func(name string) string {
+    return fmt.Sprintf("Hola %s!", name)
+})
+
