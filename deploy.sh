@@ -6,7 +6,7 @@ BINARY_NAME=$1
 
 rm -rfv public/assets
 git checkout -b build
-GOOS=linux buffalo build -z
+GOOS=linux buffalo build
 git add .
 git add -f "bin/${BINARY_NAME}"
 git commit -a -m "binary commit"

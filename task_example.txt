@@ -1,4 +1,20 @@
-var _ = Add("my_info", func(c *Context) error {
+var _ = grift.Namespace("user", func() {
+
+	grift.Desc("info", "Print user info")
+	grift.Add("info", func(c *grift.Context) error {
+		type Data struct {
+			Name   string
+			Number string
+		}
+
+		user := Data{Name: "Manuel", Number: "301257234"}
+		fmt.Printf("%+v\n", user)
+		return nil
+	})
+
+})
+
+var _ = grift.Add("userinfo", func(c *grift.Context) error {
 	type Data struct {
 		Name   string
 		Number string

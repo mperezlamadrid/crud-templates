@@ -1,0 +1,26 @@
+func findPostMW(h buffalo.Handler) buffalo.Handler {
+	return func(c buffalo.Context) error {
+		id := c.Param("post_id")
+
+		if id != "" {
+			post := &models.Post{}
+			tx := c.Value("tx").(*pop.Connection)
+			err := tx.Find(post, id)
+
+			if err != nil {
+				return c.Error(404, errors.WithStack(err))
+			}
+
+			c.Set("post", post)
+		}
+
+		return h(c)
+	}
+}
+
+
+var p buffalo.Resource
+posts := app.Resource("/posts", PostsResource{&buffalo.BaseResource{}})
+posts.Use(findPostMW)
+p = &PostsResource{&buffalo.BaseResource{}}
+posts.Middleware.Skip(findPostMW, p.List)
